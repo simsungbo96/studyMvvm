@@ -21,11 +21,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         super.onCreate(savedInstanceState)
         initViewSetting()
 
+
     }
 
     override fun initViewSetting() {
         binding.viewmodel = viewModel
         binding.activity = this
+
 
     }
 
@@ -34,4 +36,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         myToast.show()
 
     }
+
+
 }

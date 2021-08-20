@@ -7,10 +7,14 @@ import android.widget.Toast
 class MainViewModel : BaseViewModel(){
 
 
-    fun add()
+    fun plusToOne()
     {
-        Log.e("add","함수")
+        _toastMsg.value = (toastMsg.value!!.toInt()+1).toString()
     }
 
+    fun minusToTwo()
+    {
+        _toastMsg.value =  (toastMsg.value!!.toInt()-1).toString()
+    }
 
 }
