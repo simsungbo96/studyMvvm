@@ -20,51 +20,15 @@
         android:layout_height="match_parent"
         tools:context=".activity.MainActivity">
 
-        <Button
-            android:id="@+id/btn1_main"
-            android:text="토스트 생성"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{()->activity.setToast()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn2_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn1_main"
-            android:onClick="@{()->viewmodel.plusToOne()}"
-            android:text="1 증가"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <Button
-            android:id="@+id/btn3_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn2_main"
-            android:onClick="@{()->viewmodel.minusToTwo()}"
-            android:text="1 감소"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_main"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn3_main"
-            android:textColor="@color/black"
-            android:text="@{viewmodel.toastMsg}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        </androidx.recyclerview.widget.RecyclerView>
+
+
 
 
     </RelativeLayout>
