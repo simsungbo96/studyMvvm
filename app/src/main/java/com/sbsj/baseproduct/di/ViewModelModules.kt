@@ -1,5 +1,6 @@
 package com.sbsj.baseproduct.di
 
+
 import com.google.gson.GsonBuilder
 import com.sbsj.baseproduct.util.RetrofitService
 import com.sbsj.baseproduct.viewmodel.*
@@ -12,20 +13,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
+
 val viewModelModule = module {
-    viewModel { BaseViewModel()}
-    viewModel { MainViewModel()}
+    viewModel { BaseViewModel() }
+    viewModel { MainViewModel(get()) }
 }
 
 val RetrofitModule = module {
 
-
     val gson = GsonBuilder().setLenient().create()
-    var client: OkHttpClient
-    val interceptor = HttpLoggingInterceptor()
+
     single {
+
+        val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
-        client = OkHttpClient.Builder()
+             OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .retryOnConnectionFailure(false)
             .cache(null)
@@ -36,12 +38,15 @@ val RetrofitModule = module {
             .build()
     }
 
-   single {  Retrofit.Builder()
-        .baseUrl("http://192.168.15.90:8080/LFSD/")
-        .client(get())
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .addConverterFactory(ScalarsConverterFactory.create())
-        .build()
-        .create(RetrofitService::class.java)}
-
+    single {
+        Retrofit.Builder()
+            .baseUrl("http://192.168.15.90:8080/LFSD/")
+            .client(get())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .build()
+            .create(RetrofitService::class.java)
+    }
 }
+
+

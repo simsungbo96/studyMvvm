@@ -2,17 +2,14 @@ package com.sbsj.baseproduct.viewmodel
 
 
 import android.util.Log
-import com.sbsj.baseproduct.MyApplication
-import com.sbsj.baseproduct.di.RetrofitModule
+import org.koin.android.ext.android.inject
+
 import com.sbsj.baseproduct.util.RetrofitService
-
 import kotlinx.coroutines.*
-import org.koin.java.KoinJavaComponent.get
-
+import org.koin.experimental.property.inject
 import org.koin.java.KoinJavaComponent.inject
 
-
-class MainViewModel : BaseViewModel() {
+class MainViewModel(val mainService: RetrofitService) : BaseViewModel() {
 
 
 
@@ -32,13 +29,8 @@ class MainViewModel : BaseViewModel() {
      fun practice()
     {
         CoroutineScope(Dispatchers.IO).launch {
-            retrofitService.getName().let {
-                Log.e("response: ", "" + it.code())
-            }
-
-
+            mainService.getName()
         }
-
     }
 
 
